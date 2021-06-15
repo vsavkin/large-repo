@@ -1,0 +1,14 @@
+import './app19component43.module.css';
+
+/* eslint-disable-next-line */
+export interface App19component43Props {}
+
+export function App19component43(props: App19component43Props) {
+  return (
+    <div>
+      <h1>Welcome to app19component43!</h1>
+    </div>
+  );
+}
+
+export default App19component43;

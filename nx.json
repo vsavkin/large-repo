@@ -1,0 +1,470 @@
+{
+  "implicitDependencies": {
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
+    },
+    ".eslintrc.json": "*"
+  },
+  "affected": {
+    "defaultBase": "main"
+  },
+  "npmScope": "happyorg",
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "@nrwl/workspace/tasks-runners/default",
+      "options": {
+        "cacheableOperations": ["build", "lint", "test", "e2e"]
+      }
+    }
+  },
+  "projects": {
+    "app0": {
+      "tags": []
+    },
+    "app0-e2e": {
+      "tags": [],
+      "implicitDependencies": ["app0"]
+    },
+    "components0": {
+      "tags": []
+    },
+    "components1": {
+      "tags": []
+    },
+    "components2": {
+      "tags": []
+    },
+    "components3": {
+      "tags": []
+    },
+    "components4": {
+      "tags": []
+    },
+    "components5": {
+      "tags": []
+    },
+    "components6": {
+      "tags": []
+    },
+    "components7": {
+      "tags": []
+    },
+    "components8": {
+      "tags": []
+    },
+    "components9": {
+      "tags": []
+    },
+    "components10": {
+      "tags": []
+    },
+    "components11": {
+      "tags": []
+    },
+    "components12": {
+      "tags": []
+    },
+    "components13": {
+      "tags": []
+    },
+    "components14": {
+      "tags": []
+    },
+    "components15": {
+      "tags": []
+    },
+    "components16": {
+      "tags": []
+    },
+    "components17": {
+      "tags": []
+    },
+    "components18": {
+      "tags": []
+    },
+    "components19": {
+      "tags": []
+    },
+    "components20": {
+      "tags": []
+    },
+    "components21": {
+      "tags": []
+    },
+    "components22": {
+      "tags": []
+    },
+    "components23": {
+      "tags": []
+    },
+    "components24": {
+      "tags": []
+    },
+    "components25": {
+      "tags": []
+    },
+    "components26": {
+      "tags": []
+    },
+    "components27": {
+      "tags": []
+    },
+    "components28": {
+      "tags": []
+    },
+    "components29": {
+      "tags": []
+    },
+    "components30": {
+      "tags": []
+    },
+    "components31": {
+      "tags": []
+    },
+    "components32": {
+      "tags": []
+    },
+    "components33": {
+      "tags": []
+    },
+    "components34": {
+      "tags": []
+    },
+    "components35": {
+      "tags": []
+    },
+    "components36": {
+      "tags": []
+    },
+    "components37": {
+      "tags": []
+    },
+    "components38": {
+      "tags": []
+    },
+    "components39": {
+      "tags": []
+    },
+    "components40": {
+      "tags": []
+    },
+    "components41": {
+      "tags": []
+    },
+    "components42": {
+      "tags": []
+    },
+    "components43": {
+      "tags": []
+    },
+    "components44": {
+      "tags": []
+    },
+    "components45": {
+      "tags": []
+    },
+    "components46": {
+      "tags": []
+    },
+    "components47": {
+      "tags": []
+    },
+    "components48": {
+      "tags": []
+    },
+    "components49": {
+      "tags": []
+    },
+    "components50": {
+      "tags": []
+    },
+    "components51": {
+      "tags": []
+    },
+    "components52": {
+      "tags": []
+    },
+    "components53": {
+      "tags": []
+    },
+    "components54": {
+      "tags": []
+    },
+    "components55": {
+      "tags": []
+    },
+    "components56": {
+      "tags": []
+    },
+    "components57": {
+      "tags": []
+    },
+    "components58": {
+      "tags": []
+    },
+    "components59": {
+      "tags": []
+    },
+    "components60": {
+      "tags": []
+    },
+    "components61": {
+      "tags": []
+    },
+    "components62": {
+      "tags": []
+    },
+    "components63": {
+      "tags": []
+    },
+    "components64": {
+      "tags": []
+    },
+    "components65": {
+      "tags": []
+    },
+    "components66": {
+      "tags": []
+    },
+    "components67": {
+      "tags": []
+    },
+    "components68": {
+      "tags": []
+    },
+    "components69": {
+      "tags": []
+    },
+    "components70": {
+      "tags": []
+    },
+    "components71": {
+      "tags": []
+    },
+    "components72": {
+      "tags": []
+    },
+    "components73": {
+      "tags": []
+    },
+    "components74": {
+      "tags": []
+    },
+    "components75": {
+      "tags": []
+    },
+    "components76": {
+      "tags": []
+    },
+    "components77": {
+      "tags": []
+    },
+    "components78": {
+      "tags": []
+    },
+    "components79": {
+      "tags": []
+    },
+    "components80": {
+      "tags": []
+    },
+    "components81": {
+      "tags": []
+    },
+    "components82": {
+      "tags": []
+    },
+    "components83": {
+      "tags": []
+    },
+    "components84": {
+      "tags": []
+    },
+    "components85": {
+      "tags": []
+    },
+    "components86": {
+      "tags": []
+    },
+    "components87": {
+      "tags": []
+    },
+    "components88": {
+      "tags": []
+    },
+    "components89": {
+      "tags": []
+    },
+    "components90": {
+      "tags": []
+    },
+    "components91": {
+      "tags": []
+    },
+    "components92": {
+      "tags": []
+    },
+    "components93": {
+      "tags": []
+    },
+    "components94": {
+      "tags": []
+    },
+    "components95": {
+      "tags": []
+    },
+    "components96": {
+      "tags": []
+    },
+    "components97": {
+      "tags": []
+    },
+    "components98": {
+      "tags": []
+    },
+    "components99": {
+      "tags": []
+    },
+    "app1": {
+      "tags": []
+    },
+    "app1-e2e": {
+      "tags": [],
+      "implicitDependencies": ["app1"]
+    },
+    "app2": {
+      "tags": []
+    },
+    "app2-e2e": {
+      "tags": [],
+      "implicitDependencies": ["app2"]
+    },
+    "app3": {
+      "tags": []
+    },
+    "app3-e2e": {
+      "tags": [],
+      "implicitDependencies": ["app3"]
+    },
+    "app4": {
+      "tags": []
+    },
+    "app4-e2e": {
+      "tags": [],
+      "implicitDependencies": ["app4"]
+    },
+    "app5": {
+      "tags": []
+    },
+    "app5-e2e": {
+      "tags": [],
+      "implicitDependencies": ["app5"]
+    },
+    "app6": {
+      "tags": []
+    },
+    "app6-e2e": {
+      "tags": [],
+      "implicitDependencies": ["app6"]
+    },
+    "app7": {
+      "tags": []
+    },
+    "app7-e2e": {
+      "tags": [],
+      "implicitDependencies": ["app7"]
+    },
+    "app8": {
+      "tags": []
+    },
+    "app8-e2e": {
+      "tags": [],
+      "implicitDependencies": ["app8"]
+    },
+    "app9": {
+      "tags": []
+    },
+    "app9-e2e": {
+      "tags": [],
+      "implicitDependencies": ["app9"]
+    },
+    "app10": {
+      "tags": []
+    },
+    "app10-e2e": {
+      "tags": [],
+      "implicitDependencies": ["app10"]
+    },
+    "app11": {
+      "tags": []
+    },
+    "app11-e2e": {
+      "tags": [],
+      "implicitDependencies": ["app11"]
+    },
+    "app12": {
+      "tags": []
+    },
+    "app12-e2e": {
+      "tags": [],
+      "implicitDependencies": ["app12"]
+    },
+    "app13": {
+      "tags": []
+    },
+    "app13-e2e": {
+      "tags": [],
+      "implicitDependencies": ["app13"]
+    },
+    "app14": {
+      "tags": []
+    },
+    "app14-e2e": {
+      "tags": [],
+      "implicitDependencies": ["app14"]
+    },
+    "app15": {
+      "tags": []
+    },
+    "app15-e2e": {
+      "tags": [],
+      "implicitDependencies": ["app15"]
+    },
+    "app16": {
+      "tags": []
+    },
+    "app16-e2e": {
+      "tags": [],
+      "implicitDependencies": ["app16"]
+    },
+    "app17": {
+      "tags": []
+    },
+    "app17-e2e": {
+      "tags": [],
+      "implicitDependencies": ["app17"]
+    },
+    "app18": {
+      "tags": []
+    },
+    "app18-e2e": {
+      "tags": [],
+      "implicitDependencies": ["app18"]
+    },
+    "app19": {
+      "tags": []
+    },
+    "app19-e2e": {
+      "tags": [],
+      "implicitDependencies": ["app19"]
+    },
+    "app20": {
+      "tags": []
+    },
+    "app20-e2e": {
+      "tags": [],
+      "implicitDependencies": ["app20"]
+    }
+  }
+}

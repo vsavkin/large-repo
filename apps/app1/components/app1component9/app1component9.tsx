@@ -1,0 +1,14 @@
+import './app1component9.module.css';
+
+/* eslint-disable-next-line */
+export interface App1component9Props {}
+
+export function App1component9(props: App1component9Props) {
+  return (
+    <div>
+      <h1>Welcome to app1component9!</h1>
+    </div>
+  );
+}
+
+export default App1component9;
