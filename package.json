@@ -1,6 +1,6 @@
 {
   "name": "happyorg",
-  "version": "0.0.0",
+  "version": "0.0.4",
   "license": "MIT",
   "scripts": {
     "nx": "nx",
@@ -46,6 +46,7 @@
     "@nrwl/eslint-plugin-nx": "12.3.6",
     "@nrwl/jest": "12.3.6",
     "@nrwl/linter": "12.3.6",
+    "@nrwl/nx-cloud": "^12.2.1",
     "@nrwl/react": "12.3.6",
     "@nrwl/tao": "12.3.6",
     "@nrwl/web": "12.3.6",
