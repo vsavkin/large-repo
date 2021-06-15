@@ -1,9 +1,6 @@
 {
   "implicitDependencies": {
-    "package.json": {
-      "dependencies": "*",
-      "devDependencies": "*"
-    },
+    "package.json": "*",
     ".eslintrc.json": "*"
   },
   "affected": {
@@ -12,9 +9,17 @@
   "npmScope": "happyorg",
   "tasksRunnerOptions": {
     "default": {
-      "runner": "@nrwl/workspace/tasks-runners/default",
+      "runner": "@nrwl/nx-cloud",
       "options": {
-        "cacheableOperations": ["build", "lint", "test", "e2e"]
+        "cacheableOperations": [
+          "build",
+          "lint",
+          "test",
+          "e2e"
+        ],
+        "accessToken": "NjExY2YwYzAtNmNiYS00ZTc5LThiOTEtYjJiMTU5ZWUxZmRlfHJlYWQtd3JpdGU=",
+        "canTrackAnalytics": false,
+        "showUsageWarnings": true
       }
     }
   },
@@ -24,7 +29,9 @@
     },
     "app0-e2e": {
       "tags": [],
-      "implicitDependencies": ["app0"]
+      "implicitDependencies": [
+        "app0"
+      ]
     },
     "components0": {
       "tags": []
@@ -331,140 +338,180 @@
     },
     "app1-e2e": {
       "tags": [],
-      "implicitDependencies": ["app1"]
+      "implicitDependencies": [
+        "app1"
+      ]
     },
     "app2": {
       "tags": []
     },
     "app2-e2e": {
       "tags": [],
-      "implicitDependencies": ["app2"]
+      "implicitDependencies": [
+        "app2"
+      ]
     },
     "app3": {
       "tags": []
     },
     "app3-e2e": {
       "tags": [],
-      "implicitDependencies": ["app3"]
+      "implicitDependencies": [
+        "app3"
+      ]
     },
     "app4": {
       "tags": []
     },
     "app4-e2e": {
       "tags": [],
-      "implicitDependencies": ["app4"]
+      "implicitDependencies": [
+        "app4"
+      ]
     },
     "app5": {
       "tags": []
     },
     "app5-e2e": {
       "tags": [],
-      "implicitDependencies": ["app5"]
+      "implicitDependencies": [
+        "app5"
+      ]
     },
     "app6": {
       "tags": []
     },
     "app6-e2e": {
       "tags": [],
-      "implicitDependencies": ["app6"]
+      "implicitDependencies": [
+        "app6"
+      ]
     },
     "app7": {
       "tags": []
     },
     "app7-e2e": {
       "tags": [],
-      "implicitDependencies": ["app7"]
+      "implicitDependencies": [
+        "app7"
+      ]
     },
     "app8": {
       "tags": []
     },
     "app8-e2e": {
       "tags": [],
-      "implicitDependencies": ["app8"]
+      "implicitDependencies": [
+        "app8"
+      ]
     },
     "app9": {
       "tags": []
     },
     "app9-e2e": {
       "tags": [],
-      "implicitDependencies": ["app9"]
+      "implicitDependencies": [
+        "app9"
+      ]
     },
     "app10": {
       "tags": []
     },
     "app10-e2e": {
       "tags": [],
-      "implicitDependencies": ["app10"]
+      "implicitDependencies": [
+        "app10"
+      ]
     },
     "app11": {
       "tags": []
     },
     "app11-e2e": {
       "tags": [],
-      "implicitDependencies": ["app11"]
+      "implicitDependencies": [
+        "app11"
+      ]
     },
     "app12": {
       "tags": []
     },
     "app12-e2e": {
       "tags": [],
-      "implicitDependencies": ["app12"]
+      "implicitDependencies": [
+        "app12"
+      ]
     },
     "app13": {
       "tags": []
     },
     "app13-e2e": {
       "tags": [],
-      "implicitDependencies": ["app13"]
+      "implicitDependencies": [
+        "app13"
+      ]
     },
     "app14": {
       "tags": []
     },
     "app14-e2e": {
       "tags": [],
-      "implicitDependencies": ["app14"]
+      "implicitDependencies": [
+        "app14"
+      ]
     },
     "app15": {
       "tags": []
     },
     "app15-e2e": {
       "tags": [],
-      "implicitDependencies": ["app15"]
+      "implicitDependencies": [
+        "app15"
+      ]
     },
     "app16": {
       "tags": []
     },
     "app16-e2e": {
       "tags": [],
-      "implicitDependencies": ["app16"]
+      "implicitDependencies": [
+        "app16"
+      ]
     },
     "app17": {
       "tags": []
     },
     "app17-e2e": {
       "tags": [],
-      "implicitDependencies": ["app17"]
+      "implicitDependencies": [
+        "app17"
+      ]
     },
     "app18": {
       "tags": []
     },
     "app18-e2e": {
       "tags": [],
-      "implicitDependencies": ["app18"]
+      "implicitDependencies": [
+        "app18"
+      ]
     },
     "app19": {
       "tags": []
     },
     "app19-e2e": {
       "tags": [],
-      "implicitDependencies": ["app19"]
+      "implicitDependencies": [
+        "app19"
+      ]
     },
     "app20": {
       "tags": []
     },
     "app20-e2e": {
       "tags": [],
-      "implicitDependencies": ["app20"]
+      "implicitDependencies": [
+        "app20"
+      ]
     }
   }
 }

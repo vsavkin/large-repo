@@ -1,94 +1,98 @@
+# Large Repo Using Distributed Task Execution
+
+This repo has:
+
+- 100 shared libraries (small libs)
+- 20 Next.js applications (each has 200 pages and 100 components)
+  - The applications require the shared libraries to be built first.
+- 20 Cypress test suites
+
+The repo is not "real-world" but its CI performance is similar to most mid-size repos in organizations.
+
+## Running CI on 1 Agents -- 1 Hour
+
+Running CI on a single agent takes about 1 hour.
+
+```yaml
+name: LargeRepo
+
+on: [ pull_request ]
+
+env:
+  NX_BRANCH: ${{ github.event.number || github.ref }}
+  NX_RUN_GROUP: ${{ github.run_id }}
+
+jobs:
+  pr:
+    runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'pull_request' }}
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          fetch-depth: 0
+      - uses: actions/setup-node@v1
+      - run: npm install
+      - run: npx nx affected --base=origin/main --target=build --parallel --max-parallel=3
+      - run: npx nx affected --base=origin/main --target=test --parallel --max-parallel=3
+      - run: npx nx affected --base=origin/main --target=lint --parallel --max-parallel=3
+      - run: npx nx affected --base=origin/main --target=e2e
+```
+
+## Running CI on 15 Agents -- 7 Minutes
+
+To run CI on multiple agents, you need to set NX_CLOUD_DISTRIBUTED_EXECUTION to true and configure a matrix of agents.
+
+```yaml
+name: LargeRepo
+
+on: [ pull_request ]
+
+env:
+  NX_BRANCH: ${{ github.event.number || github.ref }}
+  NX_RUN_GROUP: ${{ github.run_id }}
+  NX_CLOUD_DISTRIBUTED_EXECUTION: 'true'
+
+jobs:
+  agents:
+    name: Nx Cloud Agents
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    strategy:
+      matrix:
+        agent: [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 ]
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+      - run: npm install
+      - name: Start Nx Agent ${{ matrix.agent }}
+        run: npx nx-cloud start-agent
+  pr:
+    runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'pull_request' }}
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          fetch-depth: 0
+      - uses: actions/setup-node@v1
+      - run: npm install
+      - name: Run verification
+        uses: JamesHenry/parallel-bash-commands@v0.1
+        with:
+          cmd1: npx nx affected --base=origin/main --target=build --parallel --max-parallel=3
+          cmd2: npx nx affected --base=origin/main --target=test --parallel --max-parallel=3
+          cmd3: npx nx affected --base=origin/main --target=lint --parallel --max-parallel=3
+          cmd4: npx nx affected --base=origin/main --target=e2e
+      - run: npx nx-cloud stop-all-agents
+```
 
 
-# Happyorg
+## Important Observations
 
-This project was generated using [Nx](https://nx.dev).
-
-<p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="450"></p>
-
-🔎 **Smart, Extensible Build Framework**
-
-## Adding capabilities to your workspace
-
-Nx supports many plugins which add capabilities for developing different types of applications and different tools.
-
-These capabilities include generating applications, libraries, etc as well as the devtools to test, and build projects as well.
-
-Below are our core plugins:
-
-- [React](https://reactjs.org)
-  - `npm install --save-dev @nrwl/react`
-- Web (no framework frontends)
-  - `npm install --save-dev @nrwl/web`
-- [Angular](https://angular.io)
-  - `npm install --save-dev @nrwl/angular`
-- [Nest](https://nestjs.com)
-  - `npm install --save-dev @nrwl/nest`
-- [Express](https://expressjs.com)
-  - `npm install --save-dev @nrwl/express`
-- [Node](https://nodejs.org)
-  - `npm install --save-dev @nrwl/node`
-
-There are also many [community plugins](https://nx.dev/nx-community) you could add.
-
-## Generate an application
-
-Run `nx g @nrwl/react:app my-app` to generate an application.
-
-> You can use any of the plugins above to generate applications as well.
-
-When using Nx, you can create multiple applications and libraries in the same workspace.
-
-## Generate a library
-
-Run `nx g @nrwl/react:lib my-lib` to generate a library.
-
-> You can also use any of the plugins above to generate libraries as well.
-
-Libraries are shareable across libraries and applications. They can be imported from `@happyorg/mylib`.
-
-## Development server
-
-Run `nx serve my-app` for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `nx g @nrwl/react:component my-component --project=my-app` to generate a new component.
-
-## Build
-
-Run `nx build my-app` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `nx test my-app` to execute the unit tests via [Jest](https://jestjs.io).
-
-Run `nx affected:test` to execute the unit tests affected by a change.
-
-## Running end-to-end tests
-
-Run `ng e2e my-app` to execute the end-to-end tests via [Cypress](https://www.cypress.io).
-
-Run `nx affected:e2e` to execute the end-to-end tests affected by a change.
-
-## Understand your workspace
-
-Run `nx dep-graph` to see a diagram of the dependencies of your projects.
-
-## Further help
-
-Visit the [Nx Documentation](https://nx.dev) to learn more.
+- As the repo grows, the number of agents can be increased to keep the worst-case CI time low.
+- The numbers above are worst-case scenarios, where Nx has to rebuild/retest everything. Because Nx has computation caching and code change analysis (affected:*), the worst case scenario isn't very common. So the average CI will be a lot lower.
+- Because the shared libs have to be built first, sharding/binning won't work for builds. In this particular example, the task graph is pretty simple, so you could try to make it work. One must imagine shared libs depending on each other, at which point, sharding won't work at all.
+- Note that regardless of the number of agents, the Nx Cloud card shows 4 commands (build/test/lint/e2e).
 
 
-
-## ☁ Nx Cloud
-
-### Distributed Computation Caching & Distributed Task Execution
-
-<p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-cloud-card.png"></p>
-
-Nx Cloud pairs with Nx in order to enable you to build and test code more rapidly, by up to 10 times. Even teams that are new to Nx can connect to Nx Cloud and start saving time instantly.
-
-Teams using Nx gain the advantage of building full-stack applications with their preferred framework alongside Nx’s advanced code generation and project dependency graph, plus a unified experience for both frontend and backend developers.
-
-Visit [Nx Cloud](https://nx.app/) to learn more.
