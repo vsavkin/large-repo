@@ -1,6 +1,10 @@
 name: LargeRepo
 
-on: [ pull_request ]
+on:
+  push:
+    branches:
+      - main
+  pull_request:
 
 env:
   NX_BRANCH: ${{ github.event.number || github.ref }}
